@@ -1,3 +1,7 @@
+function getSum(array) {
+  return array.reduce((sum, number) => sum + number);
+}
+
 function getAvg(array) {
   return getSum(array) / array.length;
 }
@@ -8,10 +12,6 @@ function getLetterGrade(gradePct) {
   ];
 
   return grades.find((grade) => grade[0] <= gradePct)[1];
-}
-
-function getSum(array) {
-  return array.reduce((sum, number) => sum + number);
 }
 
 function transpose(array) {
@@ -34,7 +34,7 @@ function getStudentGrades(scoreObj) {
 
 function getExamSummary(examData) {
   return transpose(examData).map((exam) => ({
-    average: getAvg(exam),
+    average: parseFloat((getAvg(exam)).toFixed(1)),
     minimum: Math.min(...exam),
     maximum: Math.max(...exam),
   }));

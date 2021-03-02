@@ -34,7 +34,7 @@ function getStudentGrades(scoreObj) {
 
 function getExamSummary(examData) {
   return transpose(examData).map((exam) => ({
-    average: getAvg(exam),
+    average: parseFloat((getAvg(exam)).toFixed(1)),
     minimum: Math.min(...exam),
     maximum: Math.max(...exam),
   }));
