@@ -40,11 +40,19 @@ function getExamSummary(examData) {
   }));
 }
 
-function generateClassRecordSummary(studentList) {
+function extractScoreData(studentList) {
   const students = Object.keys(studentList);
-  const scoreData = students.map((student) => studentList[student].scores);
+  return students.map((student) => studentList[student].scores);  
+}
 
-  const examData = scoreData.map((score) => score.exams);
+function extractExamData(scoreData) {
+  return scoreData.map((score) => score.exams);
+}
+
+function generateClassRecordSummary(studentList) {
+  const scoreData = extractScoreData(studentList);
+
+  const examData = extractExamData(scoreData);
 
   return {
     studentGrades: getStudentGrades(scoreData),
